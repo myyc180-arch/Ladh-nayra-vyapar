@@ -1,0 +1,53 @@
+{
+  "name": "lady-nayra-billing-pro",
+  "version": "2.0.0",
+  "private": true,
+  "description": "LADY NAYRA Billing Pro",
+  "main": "electron-main.js",
+  "scripts": {
+    "start": "node server.js",
+    "desktop": "electron .",
+    "build:win": "electron-builder --win --x64 --publish never"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "@capacitor/core": "^6.2.1",
+    "@capacitor/android": "^6.2.1"
+  },
+  "devDependencies": {
+    "electron": "^22.3.27",
+    "electron-builder": "^24.13.3",
+    "@capacitor/cli": "^6.2.1"
+  },
+  "build": {
+    "appId": "com.ladynayra.billing",
+    "productName": "LADY NAYRA Billing Pro",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!dist/**/*",
+      "!android/**/*"
+    ],
+    "asar": true,
+    "publish": null,
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "LADY NAYRA Billing Pro"
+    }
+  }
+}
