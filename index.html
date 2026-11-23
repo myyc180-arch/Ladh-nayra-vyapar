@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#7c3aed">
+<title>LADY NAYRA — Billing Pro</title>
+<link rel="manifest" href="manifest.json">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f4f6fb;color:#18212f}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}.app{display:flex;min-height:100vh}
+.sidebar{width:250px;background:#171326;color:#fff;padding:18px 14px;position:fixed;inset:0 auto 0 0;z-index:20;overflow:auto}
+.brand{display:flex;gap:11px;align-items:center;padding:10px 8px 22px}.logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#a855f7,#ec4899);display:grid;place-items:center;font-weight:900}.brand b{display:block;font-size:16px}.brand span{font-size:11px;color:#b9b4c8}
+.nav{display:grid;gap:6px}.nav button{background:transparent;color:#c9c3d3;text-align:left;padding:11px 12px;border-radius:9px;font-weight:650}.nav button.active,.nav button:hover{background:#312544;color:#fff}.nav button span{margin-left:9px}
+.main{margin-left:250px;width:calc(100% - 250px);min-height:100vh}.top{height:70px;background:#fff;border-bottom:1px solid #e7eaf0;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:10}.top h1{font-size:19px;margin:0}.top small{color:#718096}.top-right{display:flex;align-items:center;gap:10px}
+.container{padding:22px;max-width:1500px;margin:auto}.page{display:none}.page.active{display:block}.grid{display:grid;gap:16px}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{background:#fff;border:1px solid #e7eaf0;border-radius:15px;padding:18px;box-shadow:0 4px 20px #1e293b0b}.stat{display:flex;justify-content:space-between;align-items:center}.stat .num{font-size:25px;font-weight:850;margin-top:6px}.muted{color:#7b8798;font-size:12px}.icon{width:42px;height:42px;border-radius:12px;background:#f1eaff;display:grid;place-items:center;font-size:20px}
+.toolbar{display:flex;gap:9px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:15px}.toolbar .left,.toolbar .right{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.btn{padding:9px 13px;border-radius:9px;font-weight:700;background:#eef1f6;color:#293346}.btn.primary{background:#7c3aed;color:#fff}.btn.success{background:#059669;color:#fff}.btn.danger{background:#dc2626;color:#fff}.btn.dark{background:#202433;color:#fff}.btn.small{padding:7px 10px;font-size:12px}
+input,select,textarea{width:100%;padding:10px 11px;border:1px solid #dfe3eb;border-radius:9px;outline:none;background:#fff;color:#18212f}input:focus,select:focus,textarea:focus{border-color:#8b5cf6;box-shadow:0 0 0 3px #8b5cf61a}.field label{font-size:11px;font-weight:800;color:#5d6878;display:block;margin-bottom:5px}.field{margin-bottom:12px}
+.table-wrap{overflow:auto;border:1px solid #e8ebf1;border-radius:12px}.table{width:100%;border-collapse:collapse;min-width:650px}.table th,.table td{padding:11px 12px;border-bottom:1px solid #edf0f4;text-align:left;font-size:12px}.table th{background:#f8f9fb;color:#667085;font-size:11px}.table tr:last-child td{border-bottom:0}
+.badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:10px;font-weight:800;background:#ede9fe;color:#6d28d9}.badge.green{background:#dcfce7;color:#166534}.badge.red{background:#fee2e2;color:#991b1b}.badge.blue{background:#dbeafe;color:#1d4ed8}
+.pos{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(340px,.8fr);gap:16px}.item-search{display:flex;gap:8px}.item-search input{font-size:14px}.item-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px;max-height:58vh;overflow:auto}.item-btn{background:#fff;border:1px solid #e6e8ee;border-radius:12px;text-align:left;padding:12px}.item-btn:hover{border-color:#8b5cf6;box-shadow:0 5px 15px #7c3aed14}.item-btn b{font-size:12px}.item-btn small{display:block;color:#7c8797;margin-top:5px}.price{font-weight:850;color:#7c3aed;margin-top:7px}
+.cart{position:sticky;top:88px}.cart-items{max-height:39vh;overflow:auto}.cart-row{display:grid;grid-template-columns:1fr auto;gap:8px;padding:11px 0;border-bottom:1px solid #edf0f4}.cart-row b{font-size:12px}.qty{display:flex;align-items:center;gap:5px}.qty button{width:25px;height:25px;border-radius:7px;background:#eef1f6;font-weight:900}.qty span{min-width:22px;text-align:center}.summary{display:grid;gap:7px;padding-top:12px}.sum{display:flex;justify-content:space-between;font-size:12px}.sum.total{font-size:18px;font-weight:900;padding-top:8px;border-top:1px dashed #dfe3eb}.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}.pay{padding:10px;border:1px solid #e1e5ed;border-radius:9px;background:#fff;font-weight:800}.pay.active{border-color:#7c3aed;background:#f3eefe;color:#6d28d9}
+.modal{position:fixed;inset:0;background:#11182788;display:none;align-items:center;justify-content:center;padding:18px;z-index:50}.modal.open{display:flex}.modal-box{width:min(720px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:16px;padding:20px}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.modal-head h2{margin:0;font-size:17px}
+.toast{position:fixed;right:18px;bottom:18px;background:#111827;color:#fff;padding:12px 16px;border-radius:10px;z-index:100;display:none}.toast.show{display:block}
+@media(max-width:1050px){.g4{grid-template-columns:repeat(2,1fr)}.pos{grid-template-columns:1fr}.cart{position:static}.item-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.sidebar{width:72px;padding:12px 8px}.brand div:not(.logo),.nav button span{display:none}.brand{justify-content:center}.nav button{text-align:center}.main{margin-left:72px;width:calc(100% - 72px)}.top{padding:0 13px}.container{padding:13px}.g4,.g3,.g2{grid-template-columns:1fr}.item-grid{grid-template-columns:repeat(2,1fr)}.top h1{font-size:16px}}
+@media(max-width:480px){.item-grid{grid-template-columns:1fr}.pos{gap:10px}.card{padding:13px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">LN</div><div><b>LADY NAYRA</b><span>Billing & Inventory Pro</span></div></div>
+  <nav class="nav">
+    <button class="active" data-page="dashboard">📊 <span>Dashboard</span></button>
+    <button data-page="billing">🧾 <span>New Sale / Billing</span></button>
+    <button data-page="sales">💰 <span>Sales</span></button>
+    <button data-page="items">📦 <span>Items / Stock</span></button>
+    <button data-page="customers">👥 <span>Customers</span></button>
+    <button data-page="purchases">🛒 <span>Purchases</span></button>
+    <button data-page="expenses">💳 <span>Expenses</span></button>
+    <button data-page="reports">📈 <span>Reports</span></button>
+    <button data-page="settings">⚙️ <span>Settings</span></button>
+  </nav>
+</aside>
+
+<main class="main">
+<header class="top"><div><h1 id="pageTitle">Dashboard</h1><small id="storeLabel">LADY NAYRA</small></div>
+<div class="top-right"><button class="btn small" onclick="exportData()">Export Backup</button><label class="btn small" style="cursor:pointer">Import<input id="importFile" type="file" accept=".json" style="display:none"></label></div></header>
+<div class="container">
+
+<section id="dashboard" class="page active">
+<div class="toolbar"><div><h2 style="margin:0 0 4px">Business Overview</h2><div class="muted">आज का कारोबार एक नज़र में</div></div><button class="btn primary" onclick="go('billing')">+ New Bill</button></div>
+<div class="grid g4">
+<div class="card stat"><div><div class="muted">Today's Sales</div><div class="num" id="dSales">₹0</div></div><div class="icon">₹</div></div>
+<div class="card stat"><div><div class="muted">Bills Today</div><div class="num" id="dBills">0</div></div><div class="icon">🧾</div></div>
+<div class="card stat"><div><div class="muted">Receivable</div><div class="num" id="dDue">₹0</div></div><div class="icon">👛</div></div>
+<div class="card stat"><div><div class="muted">Stock Items</div><div class="num" id="dItems">0</div></div><div class="icon">📦</div></div>
+</div>
+<div class="grid g2" style="margin-top:16px">
+<div class="card"><h3>Quick Actions</h3><div class="grid g2"><button class="btn primary" onclick="go('billing')">🧾 New Sale</button><button class="btn" onclick="openItemModal()">＋ Add Item</button><button class="btn" onclick="openCustomerModal()">＋ Customer</button><button class="btn" onclick="go('reports')">📈 Reports</button></div></div>
+<div class="card"><h3>Low Stock</h3><div id="lowStock"></div></div>
+</div>
+</section>
+
+<section id="billing" class="page">
+<div class="toolbar"><div><h2 style="margin:0">New Sale / Invoice</h2><div class="muted">Fast POS billing</div></div><div class="right"><button class="btn" onclick="clearCart()">Clear</button></div></div>
+<div class="pos">
+<div class="card">
+<div class="item-search"><input id="itemSearch" placeholder="Search item / barcode / code..." oninput="renderItemButtons()"><button class="btn" onclick="openItemModal()">+ Item</button></div>
+<div id="itemGrid" class="item-grid"></div>
+</div>
+<div class="card cart">
+<div class="field"><label>Customer</label><select id="billCustomer"></select></div>
+<div class="cart-items" id="cartItems"></div>
+<div class="summary">
+<div class="sum"><span>Subtotal</span><b id="subTotal">₹0</b></div>
+<div class="sum"><span>Discount</span><input id="discount" type="number" value="0" min="0" style="width:100px;padding:5px;text-align:right" oninput="renderCart()"></div>
+<div class="sum"><span>GST</span><b id="gstTotal">₹0</b></div>
+<div class="sum total"><span>Grand Total</span><b id="grandTotal">₹0</b></div>
+</div>
+<div class="pay-grid"><button class="pay active" data-pay="Cash">💵 Cash</button><button class="pay" data-pay="UPI">📱 UPI</button><button class="pay" data-pay="Card">💳 Card</button><button class="pay" data-pay="Credit">📒 Credit</button></div>
+<button class="btn success" style="width:100%;font-size:15px;padding:13px" onclick="completeSale()">SAVE & PRINT BILL</button>
+</div></div>
+</section>
+
+<section id="sales" class="page">
+<div class="toolbar"><div><h2 style="margin:0">Sales</h2><div class="muted">Invoices and payment status</div></div><button class="btn primary" onclick="go('billing')">+ New Sale</button></div>
+<div class="card"><div class="table-wrap"><table class="table"><thead><tr><th>Invoice</th><th>Date</th><th>Customer</th><th>Items</th><th>Total</th><th>Payment</th><th></th></tr></thead><tbody id="salesTable"></tbody></table></div></div>
+</section>
+
+<section id="items" class="page">
+<div class="toolbar"><div><h2 style="margin:0">Items & Stock</h2><div class="muted">Products, rates and inventory</div></div><button class="btn primary" onclick="openItemModal()">+ Add Item</button></div>
+<div class="card"><div class="table-wrap"><table class="table"><thead><tr><th>Code</th><th>Item</th><th>Category</th><th>Purchase</th><th>Sale</th><th>GST</th><th>Stock</th><th></th></tr></thead><tbody id="itemsTable"></tbody></table></div></div>
+</section>
+
+<section id="customers" class="page">
+<div class="toolbar"><div><h2 style="margin:0">Customers</h2><div class="muted">Customer ledger and outstanding</div></div><button class="btn primary" onclick="openCustomerModal()">+ Add Customer</button></div>
+<div class="card"><div class="table-wrap"><table class="table"><thead><tr><th>Name</th><th>Mobile</th><th>GSTIN</th><th>Opening Balance</th><th></th></tr></thead><tbody id="customersTable"></tbody></table></div></div>
+</section>
+
+<section id="purchases" class="page">
+<div class="toolbar"><div><h2 style="margin:0">Purchases</h2><div class="muted">Purchase entries increase stock</div></div><button class="btn primary" onclick="openPurchaseModal()">+ Purchase</button></div>
+<div class="card"><div class="table-wrap"><table class="table"><thead><tr><th>Invoice</th><th>Date</th><th>Supplier</th><th>Total</th><th>Items</th></tr></thead><tbody id="purchasesTable"></tbody></table></div></div>
+</section>
+
+<section id="expenses" class="page">
+<div class="toolbar"><div><h2 style="margin:0">Expenses</h2><div class="muted">Track daily business expenses</div></div><button class="btn primary" onclick="openExpenseModal()">+ Expense</button></div>
+<div class="card"><div class="table-wrap"><table class="table"><thead><tr><th>Date</th><th>Category</th><th>Description</th><th>Amount</th></tr></thead><tbody id="expensesTable"></tbody></table></div></div>
+</section>
+
+<section id="reports" class="page">
+<div class="toolbar"><div><h2 style="margin:0">Reports</h2><div class="muted">Sales, profit and stock snapshot</div></div></div>
+<div class="grid g4"><div class="card stat"><div><div class="muted">Sales</div><div class="num" id="rSales">₹0</div></div></div><div class="card stat"><div><div class="muted">Estimated Profit</div><div class="num" id="rProfit">₹0</div></div></div><div class="card stat"><div><div class="muted">Purchases</div><div class="num" id="rPurchase">₹0</div></div></div><div class="card stat"><div><div class="muted">Expenses</div><div class="num" id="rExpense">₹0</div></div></div></div>
+<div class="card" style="margin-top:16px"><h3>Payment Collection</h3><div id="paymentReport"></div></div>
+</section>
+
+<section id="settings" class="page">
+<div class="toolbar"><div><h2 style="margin:0">Settings</h2><div class="muted">Business and invoice settings</div></div></div>
+<div class="grid g2">
+<div class="card"><h3>Business Profile</h3><div class="field"><label>Business Name</label><input id="setName"></div><div class="field"><label>Mobile</label><input id="setMobile"></div><div class="field"><label>Address</label><textarea id="setAddress"></textarea></div><div class="field"><label>GSTIN</label><input id="setGstin"></div><button class="btn primary" onclick="saveSettings()">Save Settings</button></div>
+<div class="card"><h3>Invoice</h3><div class="field"><label>Invoice Prefix</label><input id="setPrefix"></div><div class="field"><label>Default GST %</label><input id="setGst" type="number"></div><p class="muted">Data इस device/browser में localStorage में save होता है. Backup regularly export करें.</p></div>
+</div>
+</section>
+
+</div></main></div>
+
+<div id="modal" class="modal"><div class="modal-box"><div class="modal-head"><h2 id="modalTitle">Add</h2><button class="btn small" onclick="closeModal()">✕</button></div><div id="modalBody"></div></div></div>
+<div id="toast" class="toast"></div>
+
+<script>
+const KEY='lady_nayra_pro_v1';
+let state={settings:{name:'LADY NAYRA',mobile:'',address:'',gstin:'',prefix:'LN',gst:5},items:[],customers:[],sales:[],purchases:[],expenses:[],cart:[],payment:'Cash'};
+const money=n=>'₹'+Number(n||0).toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2});
+function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s)state={...state,...s}}catch(e){} if(!state.items.length)state.items=[{id:'I1',code:'1001',name:'Bridal Lehenga Set',category:'Lehenga',cost:3200,price:5499,gst:5,stock:6},{id:'I2',code:'1002',name:'Party Wear Gown',category:'Gown',cost:1400,price:2499,gst:5,stock:10},{id:'I3',code:'1003',name:'Designer Saree',category:'Saree',cost:1800,price:3299,gst:5,stock:8}];save()}
+function save(){localStorage.setItem(KEY,JSON.stringify(state));refresh()}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
+function go(page){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(page).classList.add('active');document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===page));document.getElementById('pageTitle').textContent=document.querySelector(`[data-page="${page}"]`).innerText.replace(/^\\S+\\s/,'');if(page==='billing')renderBilling();refresh()}
+function refresh(){document.getElementById('storeLabel').textContent=state.settings.name||'LADY NAYRA';renderDashboard();renderTables();renderReports();renderCustomersSelect();renderItemButtons();renderCart()}
+function renderDashboard(){const today=new Date().toISOString().slice(0,10), ss=state.sales.filter(s=>s.date===today);document.getElementById('dSales').textContent=money(ss.reduce((a,s)=>a+s.total,0));document.getElementById('dBills').textContent=ss.length;document.getElementById('dDue').textContent=money(state.sales.reduce((a,s)=>a+(s.balance||0),0));document.getElementById('dItems').textContent=state.items.length;document.getElementById('lowStock').innerHTML=state.items.filter(i=>i.stock<=3).map(i=>`<div style="padding:8px 0;border-bottom:1px solid #eee">${i.name}<span class="badge red" style="float:right">${i.stock} left</span></div>`).join('')||'<span class="muted">No low-stock items</span>'}
+function renderItemButtons(){const q=(document.getElementById('itemSearch')?.value||'').toLowerCase();document.getElementById('itemGrid').innerHTML=state.items.filter(i=>(i.name+i.code+i.category).toLowerCase().includes(q)).map(i=>`<button class="item-btn" onclick="addToCart('${i.id}')" ${i.stock<=0?'disabled':''}><b>${i.name}</b><small>${i.code} · Stock ${i.stock}</small><div class="price">${money(i.price)}</div></button>`).join('')||'<div class="muted">No items found</div>'}
+function addToCart(id){const i=state.items.find(x=>x.id===id);if(!i||i.stock<=0)return toast('Stock unavailable');let c=state.cart.find(x=>x.id===id);if(c){if(c.qty>=i.stock)return toast('Maximum stock reached');c.qty++}else state.cart.push({id,qty:1});renderCart()}
+function renderCart(){const box=document.getElementById('cartItems');if(!box)return;box.innerHTML=state.cart.map(c=>{const i=state.items.find(x=>x.id===c.id);return `<div class="cart-row"><div><b>${i.name}</b><div class="muted">${money(i.price)} × ${c.qty}</div></div><div class="qty"><button onclick="changeQty('${i.id}',-1)">−</button><span>${c.qty}</span><button onclick="changeQty('${i.id}',1)">+</button></div></div>`}).join('')||'<div class="muted" style="padding:20px;text-align:center">Add items to create a bill</div>';let sub=state.cart.reduce((a,c)=>{const i=state.items.find(x=>x.id===c.id);return a+i.price*c.qty},0);let disc=Number(document.getElementById('discount')?.value||0),tax=Math.max(0,sub-disc)*Number(state.settings.gst||0)/100,total=Math.max(0,sub-disc)+tax;document.getElementById('subTotal').textContent=money(sub);document.getElementById('gstTotal').textContent=money(tax);document.getElementById('grandTotal').textContent=money(total)}
+function changeQty(id,n){let c=state.cart.find(x=>x.id===id);if(!c)return;c.qty+=n;if(c.qty<=0)state.cart=state.cart.filter(x=>x.id!==id);renderCart()}
+function clearCart(){state.cart=[];document.getElementById('discount').value=0;renderCart()}
+function renderCustomersSelect(){const s=document.getElementById('billCustomer');if(s)s.innerHTML='<option value="">Walk-in Customer</option>'+state.customers.map(c=>`<option value="${c.id}">${c.name} — ${c.mobile||''}</option>`).join('')}
+function completeSale(){if(!state.cart.length)return toast('Bill में item जोड़ें');let sub=0;state.cart.forEach(c=>{const i=state.items.find(x=>x.id===c.id);sub+=i.price*c.qty;i.stock-=c.qty});let disc=Number(document.getElementById('discount').value||0),gst=Math.max(0,sub-disc)*Number(state.settings.gst||0)/100,total=Math.max(0,sub-disc)+gst;let cust=state.customers.find(c=>c.id===document.getElementById('billCustomer').value);let bill=(state.settings.prefix||'LN')+'-'+String(state.sales.length+1).padStart(5,'0');let s={id:Date.now().toString(),billNo:bill,date:new Date().toISOString().slice(0,10),customer:cust?.name||'Walk-in Customer',customerId:cust?.id||'',items:state.cart.map(c=>{const i=state.items.find(x=>x.id===c.id);return{name:i.name,qty:c.qty,price:i.price,cost:i.cost}}),subtotal:sub,discount:disc,gst,total,payment:state.payment,balance:state.payment==='Credit'?total:0};state.sales.unshift(s);state.cart=[];save();printBill(s);toast('Bill saved successfully')}
+function printBill(s){const st=state.settings,w=window.open('','_blank');if(!w)return;w.document.write(`<html><head><title>${s.billNo}</title><style>body{font-family:Arial;padding:25px;max-width:700px;margin:auto}h1{text-align:center;color:#7c3aed}.line{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #eee}.total{font-size:20px;font-weight:bold}</style></head><body><h1>${st.name}</h1><p style="text-align:center">${st.address||''}<br>${st.mobile||''} ${st.gstin?'| GSTIN: '+st.gstin:''}</p><hr><div class=line><b>Invoice</b><b>${s.billNo}</b></div><div class=line><span>Customer</span><span>${s.customer}</span></div><div class=line><span>Date</span><span>${s.date}</span></div>${s.items.map(i=>`<div class=line><span>${i.name} × ${i.qty}</span><span>${money(i.price*i.qty)}</span></div>`).join('')}<div class=line><span>Subtotal</span><span>${money(s.subtotal)}</span></div><div class=line><span>Discount</span><span>-${money(s.discount)}</span></div><div class=line><span>GST</span><span>${money(s.gst)}</span></div><div class="line total"><span>Total</span><span>${money(s.total)}</span></div><p style="text-align:center">Payment: ${s.payment}<br>Thank you for shopping with ${st.name}!</p><script>window.print()<\/script></body></html>`);w.document.close()}
+function renderTables(){document.getElementById('salesTable').innerHTML=state.sales.map(s=>`<tr><td><b>${s.billNo}</b></td><td>${s.date}</td><td>${s.customer}</td><td>${s.items.length}</td><td>${money(s.total)}</td><td><span class="badge ${s.payment==='Credit'?'red':'green'}">${s.payment}</span></td><td><button class="btn small" onclick='printBill(${JSON.stringify(s)})'>Print</button></td></tr>`).join('')||emptyRow(7);document.getElementById('itemsTable').innerHTML=state.items.map(i=>`<tr><td>${i.code}</td><td><b>${i.name}</b></td><td>${i.category}</td><td>${money(i.cost)}</td><td>${money(i.price)}</td><td>${i.gst}%</td><td><span class="badge ${i.stock<=3?'red':'green'}">${i.stock}</span></td><td><button class="btn small" onclick="editItem('${i.id}')">Edit</button></td></tr>`).join('')||emptyRow(8);document.getElementById('customersTable').innerHTML=state.customers.map(c=>`<tr><td><b>${c.name}</b></td><td>${c.mobile||''}</td><td>${c.gstin||''}</td><td>${money(c.opening||0)}</td><td><button class="btn small" onclick="editCustomer('${c.id}')">Edit</button></td></tr>`).join('')||emptyRow(5);document.getElementById('purchasesTable').innerHTML=state.purchases.map(p=>`<tr><td>${p.invoice}</td><td>${p.date}</td><td>${p.supplier}</td><td>${money(p.total)}</td><td>${p.items}</td></tr>`).join('')||emptyRow(5);document.getElementById('expensesTable').innerHTML=state.expenses.map(e=>`<tr><td>${e.date}</td><td>${e.category}</td><td>${e.description}</td><td>${money(e.amount)}</td></tr>`).join('')||emptyRow(4)}
+function emptyRow(n){return `<tr><td colspan="${n}" style="text-align:center;color:#8792a2;padding:25px">No records yet</td></tr>`}
+function openModal(title,body){document.getElementById('modalTitle').textContent=title;document.getElementById('modalBody').innerHTML=body;document.getElementById('modal').classList.add('open')}function closeModal(){document.getElementById('modal').classList.remove('open')}
+function openItemModal(id){const i=state.items.find(x=>x.id===id)||{};openModal(id?'Edit Item':'Add Item',`<div class="grid g2"><div class=field><label>Item Name</label><input id=fName value="${i.name||''}"></div><div class=field><label>Item Code / Barcode</label><input id=fCode value="${i.code||''}"></div><div class=field><label>Category</label><input id=fCat value="${i.category||''}"></div><div class=field><label>Purchase Price</label><input id=fCost type=number value="${i.cost||0}"></div><div class=field><label>Sale Price</label><input id=fPrice type=number value="${i.price||0}"></div><div class=field><label>GST %</label><input id=fGst type=number value="${i.gst??state.settings.gst}"></div><div class=field><label>Stock</label><input id=fStock type=number value="${i.stock||0}"></div></div><button class="btn primary" onclick="saveItem('${id||''}')">Save Item</button>`)}
+function saveItem(id){const o={id:id||'I'+Date.now(),name:fName.value,code:fCode.value,category:fCat.value,cost:Number(fCost.value),price:Number(fPrice.value),gst:Number(fGst.value),stock:Number(fStock.value)};if(!o.name)return toast('Item name required');if(id)state.items=state.items.map(x=>x.id===id?o:x);else state.items.push(o);closeModal();save();toast('Item saved')}
+function editItem(id){openItemModal(id)}
+function openCustomerModal(id){const c=state.customers.find(x=>x.id===id)||{};openModal(id?'Edit Customer':'Add Customer',`<div class=field><label>Name</label><input id=cName value="${c.name||''}"></div><div class=field><label>Mobile</label><input id=cMobile value="${c.mobile||''}"></div><div class=field><label>GSTIN</label><input id=cGstin value="${c.gstin||''}"></div><div class=field><label>Opening Balance</label><input id=cOpening type=number value="${c.opening||0}"></div><button class="btn primary" onclick="saveCustomer('${id||''}')">Save Customer</button>`)}
+function saveCustomer(id){const o={id:id||'C'+Date.now(),name:cName.value,mobile:cMobile.value,gstin:cGstin.value,opening:Number(cOpening.value||0)};if(!o.name)return toast('Customer name required');if(id)state.customers=state.customers.map(x=>x.id===id?o:x);else state.customers.push(o);closeModal();save();toast('Customer saved')}
+function editCustomer(id){openCustomerModal(id)}
+function openExpenseModal(){openModal('Add Expense',`<div class=field><label>Category</label><select id=eCat><option>Rent</option><option>Salary</option><option>Transport</option><option>Electricity</option><option>Marketing</option><option>Other</option></select></div><div class=field><label>Description</label><input id=eDesc></div><div class=field><label>Amount</label><input id=eAmount type=number></div><button class="btn primary" onclick="saveExpense()">Save Expense</button>`)}
+function saveExpense(){state.expenses.unshift({date:new Date().toISOString().slice(0,10),category:eCat.value,description:eDesc.value,amount:Number(eAmount.value||0)});closeModal();save();toast('Expense saved')}
+function openPurchaseModal(){openModal('New Purchase',`<div class=field><label>Supplier</label><input id=pSupplier></div><div class=field><label>Invoice No.</label><input id=pInvoice></div><div class=field><label>Item Code</label><input id=pCode></div><div class=field><label>Quantity</label><input id=pQty type=number value="1"></div><div class=field><label>Purchase Rate</label><input id=pRate type=number></div><button class="btn primary" onclick="savePurchase()">Save Purchase</button>`)}
+function savePurchase(){let i=state.items.find(x=>x.code===pCode.value),q=Number(pQty.value),r=Number(pRate.value);if(i)i.stock+=q;let p={invoice:pInvoice.value||'PUR-'+(state.purchases.length+1),date:new Date().toISOString().slice(0,10),supplier:pSupplier.value||'Supplier',items:q+' × '+(i?.name||pCode.value),total:q*r};state.purchases.unshift(p);closeModal();save();toast('Purchase saved')}
+function renderReports(){const sales=state.sales.reduce((a,s)=>a+s.total,0),profit=state.sales.reduce((a,s)=>a+s.items.reduce((x,i)=>x+(i.price-i.cost)*i.qty,0)-s.discount,0),pur=state.purchases.reduce((a,p)=>a+p.total,0),exp=state.expenses.reduce((a,e)=>a+e.amount,0);document.getElementById('rSales').textContent=money(sales);document.getElementById('rProfit').textContent=money(profit-exp);document.getElementById('rPurchase').textContent=money(pur);document.getElementById('rExpense').textContent=money(exp);let pay={Cash:0,UPI:0,Card:0,Credit:0};state.sales.forEach(s=>pay[s.payment]=(pay[s.payment]||0)+s.total);document.getElementById('paymentReport').innerHTML=Object.entries(pay).map(([k,v])=>`<div class=sum style="padding:10px 0"><span>${k}</span><b>${money(v)}</b></div>`).join('')}
+function saveSettings(){state.settings={...state.settings,name:setName.value,mobile:setMobile.value,address:setAddress.value,gstin:setGstin.value,prefix:setPrefix.value,gst:Number(setGst.value||0)};save();toast('Settings saved')}
+function loadSettings(){setName.value=state.settings.name;setMobile.value=state.settings.mobile;setAddress.value=state.settings.address;setGstin.value=state.settings.gstin;setPrefix.value=state.settings.prefix;setGst.value=state.settings.gst}
+function exportData(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}));a.download='lady-nayra-backup.json';a.click()}
+document.getElementById('importFile').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{state=JSON.parse(r.result);save();toast('Backup imported')}catch(x){toast('Invalid backup')}};r.readAsText(f)}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>go(b.dataset.page));document.querySelectorAll('.pay').forEach(b=>b.onclick=()=>{document.querySelectorAll('.pay').forEach(x=>x.classList.remove('active'));b.classList.add('active');state.payment=b.dataset.pay});
+load();loadSettings();refresh();
+</script>
+</body></html>
